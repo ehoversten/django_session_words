@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Django Survey Form Result</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'survey_form/css/survey_styles.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="navbar">
+          <h1>Assignment: Survey Forms with Django</h1>
+        </div>
+      </div>
+      <div class="container">
+        <div class="count">
+          <h2>Thanks for submitting this form. You have submitted this form {{ request.session.count }} times.</h2>
+        </div>
+        <div class="result">
+          <h1>Submitted Information:</h1>
+          <h3>Name: {{ request.session.name }}</h3>
+          <h3>Dojo Location: {{ request.session.location }}</h3>
+          <h3>Favorite Language: {{ request.session.fav }}</h3>
+          <h3>Comments: {{ request.session.comments }}</h3>
+        </div>
+        <div class="forms">
+          <form class="form-group" action="/reset" method="post">
+            {% csrf_token %}
+
+            <button class="btn btn-primary" type="submit" name="button">Go Back</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>>

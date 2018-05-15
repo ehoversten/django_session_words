@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Django Survey Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'survey_form/css/survey_styles.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="navbar">
+          <h1>Assignment: Survey Forms with Django</h1>
+        </div>
+      </div>
+      <div class="container">
+        <div class="forms">
+          <form class="form-group" action="/process" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="count" value="">
+            Your Name: <input class="input-group mb-3" type="text" name="name" value="">
+            Dojo Location: <select name="location" class="form-control" id="location">
+              <option>Seattle, WA</option>
+              <option>Washington, DC</option>
+              <option>Chicago, IL</option>
+              <option>Austin, TX</option>
+            </select>
+            Favorite Language: <select name="fav" class="form-control" id="fav">
+              <option>Java</option>
+              <option>JavaScript</option>
+              <option>Python</option>
+              <option>iOS</option>
+              <option>Ruby on Rails</option>
+            </select>
+            Comments: <input class="input-group mb-3" type="textarea" name="comments" value="">
+            <button class="btn btn-primary" type="submit" name="button">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
